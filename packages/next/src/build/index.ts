@@ -1481,7 +1481,7 @@ export default async function build(
           'Building'
         )
         const promises: Promise<any>[] = []
-        const sema = new Sema(10)
+        const sema = new Sema(1)
         const enqueue = (fn: () => Promise<void>) => {
           promises.push(
             (async () => {
@@ -1496,7 +1496,9 @@ export default async function build(
           )
         }
 
+        let i = 0
         for (const [page, route] of currentEntrypoints.page) {
+          if (i++ % 10 !== 0) continue
           enqueue(() =>
             handleRouteType({
               dev,
@@ -1514,6 +1516,7 @@ export default async function build(
         }
 
         for (const [page, route] of currentEntrypoints.app) {
+          if (i++ % 10 !== 0) continue
           enqueue(() =>
             handleRouteType({
               page,
@@ -1529,15 +1532,15 @@ export default async function build(
           )
         }
 
-        enqueue(() =>
-          handlePagesErrorRoute({
-            currentEntryIssues,
-            entrypoints: currentEntrypoints,
-            manifestLoader,
-            rewrites: emptyRewritesObjToBeImplemented,
-            logErrors: false,
-          })
-        )
+        // enqueue(() =>
+        //   handlePagesErrorRoute({
+        //     currentEntryIssues,
+        //     entrypoints: currentEntrypoints,
+        //     manifestLoader,
+        //     rewrites: emptyRewritesObjToBeImplemented,
+        //     logErrors: false,
+        //   })
+        // )
         await Promise.all(promises)
 
         await manifestLoader.writeManifests({
