@@ -291,7 +291,15 @@ pub async fn get_client_module_options_context(
             // If the module is an internal asset (i.e overlay, fallback) coming from the embedded
             // FS, don't apply user defined transforms.
             (
-                ContextCondition::InPath(next_js_fs().root()),
+                ContextCondition::any(vec![
+                    ContextCondition::InPath(next_js_fs().root()),
+                    ContextCondition::InPath(
+                        turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                    ),
+                    ContextCondition::InPath(
+                        turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                    ),
+                ]),
                 ModuleOptionsContext {
                     enable_typescript_transform: Some(TypescriptTransformOptions::default().cell()),
                     enable_jsx: Some(JsxTransformOptions::default().cell()),

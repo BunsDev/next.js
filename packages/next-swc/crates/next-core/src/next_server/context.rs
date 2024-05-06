@@ -485,7 +485,15 @@ pub async fn get_server_module_options_context(
                         foreign_code_module_options_context.cell(),
                     ),
                     (
-                        ContextCondition::InPath(next_js_fs().root()),
+                        ContextCondition::any(vec![
+                            ContextCondition::InPath(next_js_fs().root()),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                            ),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                            ),
+                        ]),
                         internal_module_options_context.cell(),
                     ),
                 ],
@@ -537,7 +545,15 @@ pub async fn get_server_module_options_context(
                         foreign_code_module_options_context.cell(),
                     ),
                     (
-                        ContextCondition::InPath(next_js_fs().root()),
+                        ContextCondition::any(vec![
+                            ContextCondition::InPath(next_js_fs().root()),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                            ),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                            ),
+                        ]),
                         internal_module_options_context.cell(),
                     ),
                 ],
@@ -604,7 +620,15 @@ pub async fn get_server_module_options_context(
                         foreign_code_module_options_context.cell(),
                     ),
                     (
-                        ContextCondition::InPath(next_js_fs().root()),
+                        ContextCondition::any(vec![
+                            ContextCondition::InPath(next_js_fs().root()),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                            ),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                            ),
+                        ]),
                         internal_module_options_context.cell(),
                     ),
                 ],
@@ -667,7 +691,15 @@ pub async fn get_server_module_options_context(
                         foreign_code_module_options_context.cell(),
                     ),
                     (
-                        ContextCondition::InPath(next_js_fs().root()),
+                        ContextCondition::any(vec![
+                            ContextCondition::InPath(next_js_fs().root()),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                            ),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                            ),
+                        ]),
                         internal_module_options_context.cell(),
                     ),
                 ],
@@ -714,7 +746,15 @@ pub async fn get_server_module_options_context(
                         foreign_code_module_options_context.cell(),
                     ),
                     (
-                        ContextCondition::InPath(next_js_fs().root()),
+                        ContextCondition::any(vec![
+                            ContextCondition::InPath(next_js_fs().root()),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::ecmascript_runtime::embed_fs().root(),
+                            ),
+                            ContextCondition::InPath(
+                                turbopack_binding::turbopack::node::embed_js::embed_fs().root(),
+                            ),
+                        ]),
                         internal_module_options_context.cell(),
                     ),
                 ],
